@@ -1,4 +1,4 @@
 .app {
-	width: 100%;
+	min-width: 100%;
 	background-image: linear-gradient(to right, #151e3d, #000080);
 }
