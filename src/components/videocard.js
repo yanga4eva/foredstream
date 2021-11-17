@@ -49,7 +49,7 @@ const VideoCard = forwardRef(({movie}, ref) => {
                 <h2> {movie.title}</h2>
                 <p className='videocard_stats'> 
                 {movie.media_type && `${movie.media_type} .`}
-                    {movie.release_date || movie.first_air_date} </p>
+                   Release Date | {movie.release_date || movie.first_air_date} </p>
                 
         </div>
         <Modal
@@ -70,11 +70,14 @@ const VideoCard = forwardRef(({movie}, ref) => {
                 src = {`${base_url}${movie.backdrop_path}`} />
                 <Reactplay movie={movie} />
                 </div>
-                    <h2 style={{padding: '30px', color: 'white'}}> {movie.title}</h2>
+                    <h2 style={{padding: '30px', color: 'white'}}> {movie.title} | Runtime </h2>
                     
                     <p style={{paddingRight: '30px', paddingLeft: '30px'}}>
                         {movie.overview}
                         </p>
+                        <p className='videocard_stats' style={{paddingLeft: '30px'}}> 
+                {movie.media_type && `${movie.media_type} .`}
+                   Release Date | {movie.release_date || movie.first_air_date} </p>
                 <br /><br />
                     </div>
           

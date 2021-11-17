@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactPlayer from 'react-player'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import '../Routes/css/reactplay.css'
-import screenfull from 'screenfull';
 
 const style = {
     position: 'absolute',
@@ -20,8 +19,6 @@ const style = {
   };
 
 function Reactplay({movie}) {
-
-    const playerContainer = useRef(null)
 
     const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
@@ -70,7 +67,7 @@ function Reactplay({movie}) {
                 >
                 <Box sx={{ ...style, width: '100%', height: '100%' }}>
 
-        <div ref={playerContainer} onMouseMove={hovervisible} onMouseLeave={hoverhidden} style={{ postion: 'relative', display: 'block'}} className='reactplay' >
+        <div onMouseMove={hovervisible} onMouseLeave={hoverhidden} style={{ postion: 'relative', display: 'block'}} className='reactplay' >
             
             
             <ReactPlayer 

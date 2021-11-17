@@ -22,7 +22,7 @@
 }
 
 .videocard_stats {
-	display: none;
+	/* display: none; */
 }
 
 .videoCard:hover > .videocard_stats {
