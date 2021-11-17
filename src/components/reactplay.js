@@ -18,7 +18,7 @@ const style = {
     pb: 3,
   };
 
-function Reactplay() {
+function Reactplay({movie}) {
 
     const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
@@ -41,16 +41,33 @@ function Reactplay() {
                 >
                 <Box sx={{ ...style, width: '100%', height: '100%' }}>
 
-        <div className='reactplay'>
+        <div style={{postion: 'relative', display: 'block'}} className='reactplay'>
+            
             
             <ReactPlayer 
+            style={{zIndex: -1}}
             className='react-player'
             width='100%'
             height='100%'
             url="https://storage.googleapis.com/etransfer/sampleVideo.mp4" 
             controls={true}
+            config={{ file: { 
+                attributes: {
+                  controlsList: 'nodownload'
+                }
+              }}}
+            playing={true}
             />
+         <div style={{postion: 'relative',   width: '5%', height: '5%', color: 'white'}} >
+                <img onClick={handleClose} style={{Width: '5%', maxHeight: '5%', cursor: 'pointer', position: 'absolute', right: '5px', paddingTop: '15px',  paddingRight: '50px' }} src= 'https://storage.googleapis.com/etransfer/close.png' />
+                </div>
+        <div style={{postion: 'relative', left: '5px', top: '30px', width: 'auto', height: '5%', color: 'white', paddingTop: '40px', paddingLeft: '20px'}} >
+                <h2> {movie.title} </h2>
+                
+                </div>
+               
         </div>
+        
                 </Box>
                 </Modal>
         </>

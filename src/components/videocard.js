@@ -68,7 +68,7 @@ const VideoCard = forwardRef(({movie}, ref) => {
                     <div style={{ position: 'relative'}}>
                     <img style={{maxWidth: '100%', maxHeight:'100%', position: 'relative', top: '0', left:'0', }}
                 src = {`${base_url}${movie.backdrop_path}`} />
-                <Reactplay />
+                <Reactplay movie={movie} />
                 </div>
                     <h2 style={{padding: '30px', color: 'white'}}> {movie.title}</h2>
                     
