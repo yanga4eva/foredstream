@@ -3,6 +3,7 @@ import '../Routes/css/videoCard.css'
 import TextTruncate from 'react-text-truncate'
 import { Modal } from '@material-ui/core'
 import Box from '@mui/material/Box';
+import Reactplay from './reactplay';
 
 const style = {
     position: 'absolute',
@@ -67,7 +68,7 @@ const VideoCard = forwardRef(({movie}, ref) => {
                     <div style={{ position: 'relative'}}>
                     <img style={{maxWidth: '100%', maxHeight:'100%', position: 'relative', top: '0', left:'0', }}
                 src = {`${base_url}${movie.backdrop_path}`} />
-                <img style={{maxWidth: '30%', maxHeight:'30%', position: 'absolute', bottom: '0', right:'0', cursor: 'pointer' }} src = 'https://storage.googleapis.com/etransfer/play.png' />
+                <Reactplay />
                 </div>
                     <h2 style={{padding: '30px', color: 'white'}}> {movie.title}</h2>
                     
