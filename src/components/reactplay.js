@@ -65,13 +65,14 @@ function Reactplay({movie}) {
                 aria-labelledby="child-modal-title"
                 aria-describedby="child-modal-description"
                 >
-                <Box sx={{ ...style, width: '100%', height: '100%' }}>
+                <Box sx={{ ...style, width: '90%', minHeight: '30%' }}>
 
-        <div onMouseMove={hovervisible} onMouseLeave={hoverhidden} style={{ postion: 'relative', display: 'block'}} className='reactplay' >
+        <div onMouseMove={hovervisible} onTouchMove={hovervisible} onMouseLeave={hoverhidden} style={{overflow:'hidden', postion: 'relative', display: 'block', height:'auto'}} className='reactplay' >
             
             
             <ReactPlayer 
             style={{zIndex: -1}}
+            onContextMenu={e => e.preventDefault()}
             className='react-player'
             width='100%'
             height='100%'
