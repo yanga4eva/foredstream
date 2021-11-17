@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import ReactPlayer from 'react-player'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import '../Routes/css/reactplay.css'
+import screenfull from 'screenfull';
 
 const style = {
     position: 'absolute',
@@ -20,6 +21,8 @@ const style = {
 
 function Reactplay({movie}) {
 
+    const playerContainer = useRef(null)
+
     const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -27,6 +30,32 @@ function Reactplay({movie}) {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleEnd = () => {
+    setTimeout(function() {
+    setOpen(false);
+    }, 6000)
+  };
+
+  const [videoHeader, setVideoHeader] = useState('visible')
+
+  const hovervisible  = () => {
+      setVideoHeader('visible')
+      setTimeout(function() {
+                setVideoHeader('hidden')
+              }, 5000)
+  }
+
+  const hoverhidden = () => {
+      setVideoHeader('hidden')
+  }
+
+  
+//   useEffect(() => {
+//     setTimeout(function() {
+//         setVideoHeader('hidden')
+//       }, 5000)
+// }, [])
 
 
     return (
@@ -41,7 +70,7 @@ function Reactplay({movie}) {
                 >
                 <Box sx={{ ...style, width: '100%', height: '100%' }}>
 
-        <div style={{postion: 'relative', display: 'block'}} className='reactplay'>
+        <div ref={playerContainer} onMouseMove={hovervisible} onMouseLeave={hoverhidden} style={{ postion: 'relative', display: 'block'}} className='reactplay' >
             
             
             <ReactPlayer 
@@ -51,6 +80,7 @@ function Reactplay({movie}) {
             height='100%'
             url="https://storage.googleapis.com/etransfer/sampleVideo.mp4" 
             controls={true}
+            onEnded={handleEnd}
             config={{ file: { 
                 attributes: {
                   controlsList: 'nodownload'
@@ -58,10 +88,10 @@ function Reactplay({movie}) {
               }}}
             playing={true}
             />
-         <div style={{postion: 'relative',   width: '5%', height: '5%', color: 'white'}} >
+         <div  style={{postion: 'relative',   width: '5%', height: '5%', color: 'white', visibility: videoHeader}} >
                 <img onClick={handleClose} style={{Width: '5%', maxHeight: '5%', cursor: 'pointer', position: 'absolute', right: '5px', paddingTop: '15px',  paddingRight: '50px' }} src= 'https://storage.googleapis.com/etransfer/close.png' />
                 </div>
-        <div style={{postion: 'relative', left: '5px', top: '30px', width: 'auto', height: '5%', color: 'white', paddingTop: '40px', paddingLeft: '20px'}} >
+        <div onMouseEnter={hovervisible} onMouseLeave={hoverhidden} style={{postion: 'relative', left: '5px', top: '30px', width: 'auto', height: '5%', color: 'white', paddingTop: '40px', paddingLeft: '20px', visibility: videoHeader}} >
                 <h2> {movie.title} </h2>
                 
                 </div>
